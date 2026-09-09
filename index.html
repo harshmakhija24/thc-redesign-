@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
@@ -47,6 +47,7 @@
     .badge-v1 { background: rgba(250,247,242,0.15); color: #FAF7F2; border: 1px solid rgba(250,247,242,0.2); }
     .badge-v2 { background: rgba(13,27,62,0.6); color: #93b4ff; border: 1px solid rgba(100,149,237,0.3); }
     .badge-v3 { background: rgba(227,0,113,0.15); color: #ff6bb5; border: 1px solid rgba(227,0,113,0.35); }
+    .badge-v5 { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.35); }
 
     /* Gradient text */
     .g-text { background: linear-gradient(90deg, #E30071, #7F30D0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -129,13 +130,13 @@
         </div>
         <h1 class="text-2xl font-bold tracking-tight">
           <span class="g-text">The Healthtech Collective</span>
-          <span class="text-white/70 font-normal text-lg ml-2">— Homepage v1 / v2 / v3 / v4</span>
+          <span class="text-white/70 font-normal text-lg ml-2">— Homepage v1 / v2 / v3 / v4 / v5</span>
         </h1>
       </div>
       <div class="flex items-center gap-3">
         <div class="metric text-center">
           <div class="text-xs text-white/40 mb-0.5">Versions</div>
-          <div class="text-xl font-bold g-text">4</div>
+          <div class="text-xl font-bold g-text">5</div>
         </div>
         <div class="metric text-center">
           <div class="text-xs text-white/40 mb-0.5">Status</div>
@@ -157,7 +158,7 @@
     </div>
 
     <!-- 3 Version Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
 
       <!-- V1 -->
       <div class="card" onclick="openModal('v1/index.html', 'V1 — Editorial Warm', 0)">
@@ -257,6 +258,32 @@
         </div>
       </div>
 
+      <!-- V5 -->
+      <div class="card" onclick="openModal('v5/index.html', 'V5 — Reordered Journey', 4)">
+        <div class="preview-wrap">
+          <iframe src="v5/index.html" loading="lazy" title="V5 Preview" scrolling="no"></iframe>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="v-tag badge-v5">V5</span>
+            <span class="text-xs text-white/30 font-mono">Reordered Journey</span>
+          </div>
+          <h2 class="text-base font-bold text-white mb-1">Reordered Journey</h2>
+          <p class="text-sm text-white/50 leading-relaxed mb-4">V4 with optimized section order: Pillars first, then proof, upcoming events, emotional CTA, Orbyt, and national footprint.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">User journey</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Events section</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Reordered flow</span>
+          </div>
+        </div>
+        <div class="border-t border-white/[0.06] px-5 py-3 flex items-center justify-between">
+          <span class="text-xs text-white/30">Based on V4</span>
+          <span class="text-xs text-[#E30071] font-semibold">Open fullscreen →</span>
+        </div>
+      </div>
+
+    </div>
+
     <!-- Shared Design System reference -->
     <div class="mt-10 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
       <div class="flex items-center gap-2 mb-4">
@@ -311,6 +338,7 @@
         <button class="v-btn" id="btn-v2" onclick="switchVersion('v2/index.html', 'V2 — Dark Builder', 1)">V2 Dark</button>
         <button class="v-btn" id="btn-v3" onclick="switchVersion('v3/index.html', 'V3 — Vibrant', 2)">V3 Vibrant</button>
         <button class="v-btn" id="btn-v4" onclick="switchVersion('v4/index.html', 'V4 — Healthtech Europe', 3)">V4 Europe</button>
+        <button class="v-btn" id="btn-v5" onclick="switchVersion('v5/index.html', 'V5 — Reordered Journey', 4)">V5 Journey</button>
       </div>
       <span id="modal-title">V1 — Editorial Warm</span>
       <button id="modal-close" onclick="closeModal()">✕ Close</button>
@@ -324,6 +352,7 @@
       { id: 'btn-v2', url: 'v2/index.html', label: 'V2 — Dark Builder' },
       { id: 'btn-v3', url: 'v3/index.html', label: 'V3 — Vibrant Community' },
       { id: 'btn-v4', url: 'v4/index.html', label: 'V4 — Healthtech Europe' },
+      { id: 'btn-v5', url: 'v5/index.html', label: 'V5 — Reordered Journey' },
     ];
 
     function openModal(url, label, activeIndex) {
