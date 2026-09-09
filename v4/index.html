@@ -341,49 +341,22 @@
 
 
 <div class="hidden md:flex items-center gap-8 font-body text-sm font-medium tracking-wide">
+<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out" href="#about">About Us</a>
+<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out" href="#events">Events</a>
 
-
-
-<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out flex items-center gap-1" href="#signals">
-
-
-
-        Signals <span class="text-xs opacity-60">▾</span>
-
-
-
-</a>
-
-
-
-<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out flex items-center gap-1" href="#pillars">
-
-
-
-        Meet <span class="text-xs opacity-60">▾</span>
-
-
-
-</a>
-
-
-
-<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out flex items-center gap-1" href="#orbyt">
-
-
-
-        Scale <span class="text-xs opacity-60">▾</span>
-
-
-
-</a>
-
-
-
+<div class="relative group">
+<button class="text-[#0F0E0D]/70 group-hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out flex items-center gap-1 focus:outline-none">
+  Programs <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<!-- Transparent hit area to prevent losing hover between button and dropdown -->
+<div class="absolute top-full left-0 w-full h-6"></div>
+<div class="absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 w-48 bg-white/95 backdrop-blur-md border border-[#0F0E0D]/10 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out flex flex-col p-2 transform origin-top translate-y-2 group-hover:translate-y-0 z-50">
+  <a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] hover:bg-[#FAF7F2] px-4 py-2.5 rounded-xl transition-colors text-sm font-medium" href="#signals">Signals</a>
+  <a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] hover:bg-[#FAF7F2] px-4 py-2.5 rounded-xl transition-colors text-sm font-medium" href="#pillars">Meet</a>
+  <a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] hover:bg-[#FAF7F2] px-4 py-2.5 rounded-xl transition-colors text-sm font-medium" href="#orbyt">Scale</a>
 </div>
-
-
-
+</div>
+</div>
 <!-- Trailing Action: Join THC / Community (Strict Single Pink Accent in Nav) -->
 
 
@@ -1856,6 +1829,7 @@
       });
     </script>
   </body></html>
+
 
 
 
