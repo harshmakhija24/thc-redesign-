@@ -308,7 +308,7 @@
 
 
 
-<nav class="fixed top-6 inset-x-0 mx-auto max-w-5xl rounded-full bg-[#FAF7F2]/85 dark:bg-surface/80 backdrop-blur-md border border-[#0F0E0D]/10 shadow-lg shadow-[#0F0E0D]/5 flex justify-between items-center px-6 py-3 w-full z-50 transition-all duration-[300ms] ease-out">
+<nav id="main-nav" class="fixed top-6 inset-x-0 mx-auto max-w-5xl rounded-full bg-[#FAF7F2]/85 dark:bg-surface/80 backdrop-blur-md border border-[#0F0E0D]/10 shadow-lg shadow-[#0F0E0D]/5 flex justify-between items-center px-6 py-3 w-full z-50 transition-all duration-[300ms] ease-out">
 
 
 
@@ -1834,8 +1834,29 @@
         observer.observe(el);
       });
     });
-  </script>
-</body></html>
+        // Smart Nav: Hide on scroll down, show on scroll up
+      const nav = document.getElementById('main-nav');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        if (!nav) return;
+        if (window.scrollY > 100) {
+          if (window.scrollY > lastScrollY) {
+            // Scrolling down
+            nav.classList.add('-translate-y-[150%]');
+          } else {
+            // Scrolling up
+            nav.classList.remove('-translate-y-[150%]');
+          }
+        } else {
+          // At the top
+          nav.classList.remove('-translate-y-[150%]');
+        }
+        lastScrollY = window.scrollY;
+      });
+    </script>
+  </body></html>
+
 
 
 
