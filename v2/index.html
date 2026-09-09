@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark scroll-smooth">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Healthtech Collective — India's Healthtech Builder Community</title>
+
+  <!-- Google Fonts: Playfair Display + DM Sans + Inter -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN with custom config -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+
+    tailwind.config = {
+
+      darkMode: 'class',
+
+      theme: {
+
+        extend: {
+
+          colors: {
+
+            thcNavy: '#0D1B3E',
+
+            thcBlack: '#080C18',
+
+            thcSurface: '#0F1929',
+
+            thcPink: '#E30071',
+
+            thcPurple: '#7F30D0',
+
+            thcOrange: '#FF4500',
+
+            thcCyan: '#00F2FE',
+
+            thcAmber: '#F6B73C',
+
+          },
+
+          fontFamily: {
+
+            serif: ['"Playfair Display"', 'serif'],
+
+            sans: ['"DM Sans"', 'sans-serif'],
+
+            mono: ['"Space Grotesk"', 'monospace'],
+
+          },
+
+          animation: {
+
+            'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+
+            'marquee': 'marquee 32s linear infinite',
+
+            'marquee-reverse': 'marquee-reverse 36s linear infinite',
+
+            'spin-slow': 'spin 40s linear infinite',
+
+          },
+
+          keyframes: {
+
+            marquee: {
+
+              '0%': { transform: 'translateX(0%)' },
+
+              '100%': { transform: 'translateX(-50%)' },
+
+            },
+
+            'marquee-reverse': {
+
+              '0%': { transform: 'translateX(-50%)' },
+
+              '100%': { transform: 'translateX(0%)' },
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  </script>
+
+  <style>
+
+    /* Custom Atmospheric radial gradients & Glass treatments */
+
+    .hero-glow-pink {
+
+      background: radial-gradient(circle, rgba(227, 0, 113, 0.28) 0%, rgba(227, 0, 113, 0) 70%);
+
+    }
+
+    .hero-glow-purple {
+
+      background: radial-gradient(circle, rgba(127, 48, 208, 0.32) 0%, rgba(127, 48, 208, 0) 70%);
+
+    }
+
+    .hero-glow-blue {
+
+      background: radial-gradient(circle, rgba(13, 27, 62, 0.95) 0%, rgba(8, 12, 24, 0) 70%);
+
+    }
+
+    .gradient-underline {
+
+      background-image: linear-gradient(90deg, #E30071, #7F30D0);
+
+      background-size: 100% 3px;
+
+      background-repeat: no-repeat;
+
+      background-position: bottom;
+
+      padding-bottom: 6px;
+
+    }
+
+    .glass-card {
+
+      background: rgba(255, 255, 255, 0.04);
+
+      backdrop-filter: blur(16px);
+
+      -webkit-backdrop-filter: blur(16px);
+
+      border: 1px solid rgba(255, 255, 255, 0.09);
+
+    }
+
+    .glass-card:hover {
+
+      background: rgba(255, 255, 255, 0.07);
+
+      border-color: rgba(227, 0, 113, 0.35);
+
+      box-shadow: 0 16px 40px -10px rgba(127, 48, 208, 0.25);
+
+    }
+
+    .glass-card-quote {
+
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      position: relative;
+
+    }
+
+    .glass-card-quote::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      border-radius: inherit;
+
+      padding: 1px;
+
+      background: linear-gradient(135deg, rgba(227,0,113,0.3) 0%, rgba(127,48,208,0.1) 50%, transparent 100%);
+
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+
+      -webkit-mask-composite: xor;
+
+      mask-composite: exclude;
+
+      pointer-events: none;
+
+    }
+
+    /* Subtle dot mesh background overlay */
+
+    .bg-grid-dots {
+
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+
+      background-size: 28px 28px;
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body class="bg-[#080C18] text-white font-sans antialiased selection:bg-thcPink selection:text-white relative overflow-x-hidden">
+
+
+
+  <!-- ==================== TOP NAVIGATION ==================== -->
+  <header class="fixed top-6 inset-x-0 mx-auto w-[92%] max-w-5xl z-50 transition-all duration-300">
+    <nav class="bg-[#080C18]/85 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 flex items-center justify-between shadow-2xl shadow-black/40">
+      <!-- Brand Logo / Wordmark -->
+      <a href="#" class="flex items-center gap-2 group">
+        <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-thcPink to-thcPurple animate-pulse"></span>
+        <div class="flex flex-col">
+          <span class="font-serif font-bold tracking-tight text-lg text-white group-hover:text-white/90 transition-colors">THE HEALTHTECH</span>
+          <span class="text-[9px] tracking-[0.28em] font-mono uppercase text-white/50 -mt-1 font-semibold">COLLECTIVE</span>
+        </div>
+      </a>
+      <!-- Center Links with Dropdown indicator -->
+      <div class="hidden md:flex items-center space-x-7 text-sm font-medium tracking-wide">
+        <a href="#signals" class="text-white/60 hover:text-white flex items-center gap-1.5 transition-colors py-1">
+          Signals <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </a>
+        <a href="#meet" class="text-white/60 hover:text-white flex items-center gap-1.5 transition-colors py-1">
+          Meet <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </a>
+        <a href="#orbyt" class="text-white/60 hover:text-white flex items-center gap-1.5 transition-colors py-1">
+          Scale <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </a>
+      </div>
+      <!-- Right Action Pill -->
+      <div class="flex items-center gap-3">
+        <a href="#orbyt" class="hidden sm:inline-flex text-xs font-mono uppercase tracking-wider text-white/60 hover:text-white px-3 py-1.5 transition-colors">
+          Orbyt Login
+        </a>
+        <a href="#join" class="relative inline-flex items-center justify-center px-5 py-2 text-xs font-bold tracking-wide text-white uppercase transition-all duration-200 bg-[#E30071] hover:bg-[#ff0080] rounded-full shadow-lg shadow-[#E30071]/30 active:scale-95 group">
+          <span>Join Community</span>
+          <svg class="w-3.5 h-3.5 ml-1.5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- ==================== HERO SECTION ==================== -->
+
+  <section class="relative min-h-screen bg-[#0D1B3E] pt-36 pb-20 px-6 sm:px-10 lg:px-16 flex items-center justify-center overflow-hidden">
+
+    <!-- Atmospheric Blurred Orbs -->
+
+    <div class="absolute -top-24 -right-20 w-[540px] h-[540px] rounded-full hero-glow-pink pointer-events-none blur-[110px] opacity-75"></div>
+
+    <div class="absolute top-1/3 -left-32 w-[600px] h-[600px] rounded-full hero-glow-purple pointer-events-none blur-[130px] opacity-80"></div>
+
+    <div class="absolute -bottom-36 right-1/4 w-[650px] h-[500px] rounded-full hero-glow-blue pointer-events-none blur-[120px] opacity-90"></div>
+
+    
+
+    <!-- Dot matrix grid & Noise texture overlay -->
+
+    <div class="absolute inset-0 bg-grid-dots opacity-40 pointer-events-none"></div>
+
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] opacity-25 pointer-events-none"></div>
+
+
+
+    <div class="relative max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+
+      
+
+      <!-- Left Column: Vision & Action -->
+
+      <div class="lg:col-span-7 space-y-8 z-10">
+
+        <!-- Community Badge -->
+
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+
+          <span class="inline-block w-2 h-2 rounded-full bg-[#E30071] animate-ping"></span>
+
+          <span class="text-[11px] font-mono font-semibold tracking-wider uppercase text-white/80">INDIA'S LARGEST HEALTHTECH COMMUNITY</span>
+
+        </div>
+
+
+
+        <!-- Hero Headline -->
+
+        <h1 class="font-serif text-5xl sm:text-6xl xl:text-[74px] font-normal tracking-tight text-white leading-[1.08]">
+
+          Bridging the gap between ideas and <br class="hidden sm:inline" />
+
+          <span class="italic font-medium gradient-underline text-transparent bg-clip-text bg-gradient-to-r from-white via-pink-100 to-white">implementation.</span>
+
+        </h1>
+
+
+
+        <!-- Subtext -->
+
+        <p class="text-white/70 font-sans text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
+
+          7,000+ founders, clinicians, and investors — building the future of healthcare in India through direct distribution, clinical pilot access, and closed-door rooms.
+
+        </p>
+
+
+
+        <!-- CTA Buttons -->
+
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+
+          <!-- Primary Gradient Button -->
+
+          <a href="#join" class="px-8 py-4 rounded-full bg-gradient-to-r from-[#E30071] via-[#aa19a4] to-[#7F30D0] hover:opacity-95 text-white font-bold text-sm tracking-wide shadow-xl shadow-[#E30071]/25 transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center gap-2.5">
+
+            <span>Join the Community</span>
+
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+
+          </a>
+
+
+
+          <!-- Ghost White-Border CTA -->
+
+          <a href="#orbyt" class="px-7 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-white font-medium text-sm tracking-wide backdrop-blur-md transition-all duration-200 flex items-center gap-2">
+
+            <span>Join Orbyt Waitlist</span>
+
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#E30071]/30 text-pink-300 border border-[#E30071]/40">77 left</span>
+
+          </a>
+
+        </div>
+
+
+
+        <!-- Micro Social Proof -->
+
+        <div class="pt-4 flex items-center gap-4 border-t border-white/10">
+
+          <div class="flex -space-x-2.5 overflow-hidden">
+
+            <div class="inline-flex items-center justify-center w-8 h-8 rounded-full ring-2 ring-[#0D1B3E] bg-[#E30071] text-[10px] font-bold text-white uppercase">DR</div>
+
+            <div class="inline-flex items-center justify-center w-8 h-8 rounded-full ring-2 ring-[#0D1B3E] bg-[#7F30D0] text-[10px] font-bold text-white uppercase">AI</div>
+
+            <div class="inline-flex items-center justify-center w-8 h-8 rounded-full ring-2 ring-[#0D1B3E] bg-[#00F2FE] text-[10px] font-bold text-[#080C18] uppercase">VC</div>
+
+            <div class="inline-flex items-center justify-center w-8 h-8 rounded-full ring-2 ring-[#0D1B3E] bg-white text-[10px] font-bold text-[#0D1B3E] uppercase">CXO</div>
+
+          </div>
+
+          <p class="text-xs text-white/60 font-sans">
+
+            <strong class="text-white font-semibold">120+ hospital chains</strong>, top seed-to-growth healthtech VCs, & AI clinical pioneers in network.
+
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Right Column: Floating Glass Stat Stack -->
+
+      <div class="lg:col-span-5 relative z-10 space-y-4">
+
+        
+
+        <!-- Ambient Glass Backing Card -->
+
+        <div class="relative p-6 sm:p-8 rounded-3xl bg-white/[0.04] backdrop-blur-2xl border border-white/15 shadow-2xl shadow-black/60 overflow-hidden">
+
+          
+
+          <!-- Live pulse badge top-right -->
+
+          <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+
+            <div class="flex items-center gap-2">
+
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+
+              <span class="text-xs font-mono uppercase tracking-wider text-white/80">Clinician-Founder Sync Active</span>
+
+            </div>
+
+            <span class="text-[11px] font-mono text-white/40">ROUNDTABLE #42</span>
+
+          </div>
+
+
+
+          <!-- Key Metrics Grid -->
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
+
+            <!-- Stat 1 -->
+
+            <div class="space-y-1">
+
+              <div class="text-4xl sm:text-5xl font-mono font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-pink-200 to-[#E30071]">
+
+                7,000+
+
+              </div>
+
+              <p class="text-xs text-white/60 font-medium">Members across India</p>
+
+            </div>
+
+
+
+            <!-- Stat 2 -->
+
+            <div class="space-y-1 sm:border-l sm:border-white/10 sm:pl-5">
+
+              <div class="text-4xl sm:text-5xl font-mono font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-[#7F30D0]">
+
+                80+
+
+              </div>
+
+              <p class="text-xs text-white/60 font-medium">Curated Events</p>
+
+            </div>
+
+
+
+            <!-- Stat 3 -->
+
+            <div class="space-y-1 sm:border-l sm:border-white/10 sm:pl-5">
+
+              <div class="text-4xl sm:text-5xl font-mono font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#E30071] to-[#7F30D0]">
+
+                5
+
+              </div>
+
+              <p class="text-xs text-white/60 font-medium">City Chapters</p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Active Hubs Footer -->
+
+          <div class="mt-8 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+
+            <div class="text-[11px] font-mono text-white/40 uppercase tracking-widest">
+
+              ACTIVE CHAPTERS:
+
+            </div>
+
+            <div class="text-xs text-white/80 font-mono font-medium tracking-wide">
+
+              Delhi · Mumbai · Bengaluru · Hyderabad · Ahmedabad
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Subtle Glow corner -->
+
+          <div class="absolute -bottom-10 -right-10 w-36 h-36 bg-gradient-to-tr from-[#7F30D0]/40 to-transparent rounded-full blur-2xl pointer-events-none"></div>
+
+        </div>
+
+
+
+        <!-- Secondary Mini Pill: Orbyt Spotlight -->
+
+        <div class="glass-card rounded-2xl p-4 flex items-center justify-between gap-4 border border-white/10 hover:border-white/20 transition-colors">
+
+          <div class="flex items-center gap-3">
+
+            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-[#FF4500] to-[#E30071] flex items-center justify-center text-white text-xs font-mono font-bold">
+
+              Î©
+
+            </div>
+
+            <div>
+
+              <p class="text-xs font-semibold text-white">Orbyt Cohort 01 Status</p>
+
+              <p class="text-[11px] text-white/50">Private algorithmic matchmaking for healthtech CEOs</p>
+
+            </div>
+
+          </div>
+
+          <span class="text-[11px] font-mono text-[#E30071] font-bold whitespace-nowrap bg-[#E30071]/10 px-2.5 py-1 rounded-full border border-[#E30071]/20">
+
+            23 spots claimed
+
+          </span>
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================== SOCIAL PROOF MARQUEE ==================== -->
+
+  <section class="py-14 bg-[#080C18] border-t border-b border-white/10 relative overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-6 text-center mb-8">
+
+      <p class="text-[11px] font-mono uppercase tracking-[0.25em] text-[#E30071] font-bold">COMMUNITY</p>
+
+      <h2 class="text-xl sm:text-2xl font-serif text-white mt-1">
+
+        Join 7,000+ healthtech leaders from across the ecosystem
+
+      </h2>
+
+    </div>
+
+
+
+    <!-- Gradient Edge Masks for Infinite Marquee -->
+
+    <div class="relative w-full overflow-hidden">
+
+      <div class="absolute left-0 inset-y-0 w-32 bg-gradient-to-r from-[#080C18] to-transparent z-10 pointer-events-none"></div>
+
+      <div class="absolute right-0 inset-y-0 w-32 bg-gradient-to-l from-[#080C18] to-transparent z-10 pointer-events-none"></div>
+
+
+
+      <!-- Marquee Track -->
+
+      <div class="flex w-[200%] animate-marquee gap-8 items-center text-sm font-medium text-white/70">
+
+        <!-- Set 1 -->
+
+        <div class="flex items-center gap-8 shrink-0">
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Apollo Hospitals</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Healthcare</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Practo</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Platform</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-pink-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">HealthifyMe</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Preventive</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Tata 1mg</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Supply & Care</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Qure.ai</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Clinical AI</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">PharmEasy</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Distribution</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Max Healthcare</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Hospital Partner</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">MedGenome</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Genomics</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Repeat Set for infinite seamless looping -->
+
+        <div class="flex items-center gap-8 shrink-0">
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Apollo Hospitals</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Healthcare</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Practo</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Platform</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-pink-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">HealthifyMe</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Preventive</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Tata 1mg</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Supply & Care</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Qure.ai</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Clinical AI</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">PharmEasy</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Distribution</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">Max Healthcare</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Hospital Partner</span>
+
+          </div>
+
+          <div class="px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/10 flex items-center gap-2.5 hover:border-white/30 transition-colors">
+
+            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+
+            <span class="font-semibold text-white tracking-tight">MedGenome</span>
+
+            <span class="text-[10px] font-mono text-white/40 uppercase">Genomics</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================== PILLARS SECTION ==================== -->
+
+  <section id="pillars" class="relative py-28 bg-[#0F1929] px-6 sm:px-10 lg:px-16 overflow-hidden">
+
+    <!-- Atmospheric glows -->
+
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-r from-thcPurple/15 to-thcPink/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+      
+
+      <!-- Section Header -->
+
+      <div class="max-w-3xl mb-16">
+
+        <span class="text-xs font-mono font-bold tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#E30071] to-[#7F30D0]">
+
+          WHAT WE DO
+
+        </span>
+
+        <h2 class="font-serif text-4xl sm:text-5xl font-normal text-white mt-3 tracking-tight">
+
+          Everything the Indian healthtech ecosystem needs
+
+        </h2>
+
+        <p class="text-white/60 text-lg mt-4 font-sans leading-relaxed">
+
+          Healthcare is hard. Distribution, clinical validation, and regulation require specialized networks, not generic advice.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- 3 Glass Pillar Cards -->
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        
+
+        <!-- Pillar 1: Signals -->
+
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 relative">
+
+          <div>
+
+            <div class="flex items-center justify-between mb-8">
+
+              <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all duration-300">
+
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+
+                </svg>
+
+              </div>
+
+              <span class="text-[10px] font-mono text-cyan-400/80 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/20">
+
+                INTELLIGENCE
+
+              </span>
+
+            </div>
+
+
+
+            <h3 class="text-2xl font-serif font-bold text-white mb-3">Signals</h3>
+
+            <p class="text-white/70 text-sm leading-relaxed mb-6 font-sans">
+
+              Curated insights, newsletters, thought leadership from Indian healthcare. What matters, what is changing, where the opportunities are. Weekly breakdowns of regulatory shifts, deal memos, and clinical tech benchmarks.
+
+            </p>
+
+          </div>
+
+
+
+          <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+
+            <span class="text-xs text-white/50 font-mono">Bi-weekly drop</span>
+
+            <a href="#signals" class="text-xs font-mono uppercase tracking-wider text-cyan-400 group-hover:text-cyan-300 flex items-center gap-1 font-bold">
+
+              Read Signals <span>â†—</span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Pillar 2: Meet -->
+
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 relative">
+
+          <div>
+
+            <div class="flex items-center justify-between mb-8">
+
+              <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-300">
+
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+
+                </svg>
+
+              </div>
+
+              <span class="text-[10px] font-mono text-amber-400/80 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+
+                CURATED SESSIONS
+
+              </span>
+
+            </div>
+
+
+
+            <h3 class="text-2xl font-serif font-bold text-white mb-3">Meet</h3>
+
+            <p class="text-white/70 text-sm leading-relaxed mb-6 font-sans">
+
+              Curated rooms. The right founder meets the right investor. Where conversations turn into partnerships, customers, and investments. Chatham House rules, zero fluff, and high-impact partnership discussions.
+
+            </p>
+
+          </div>
+
+
+
+          <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+
+            <span class="text-xs text-white/50 font-mono">5 Cities Monthly</span>
+
+            <a href="#meet" class="text-xs font-mono uppercase tracking-wider text-amber-400 group-hover:text-amber-300 flex items-center gap-1 font-bold">
+
+              Explore Meetups <span>â†—</span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Pillar 3: Scale / Orbyt -->
+
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1 relative border-[#E30071]/30">
+
+          <div>
+
+            <div class="flex items-center justify-between mb-8">
+
+              <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-[#E30071]/30 flex items-center justify-center text-[#E30071] group-hover:scale-110 group-hover:bg-[#E30071]/20 transition-all duration-300">
+
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+
+                </svg>
+
+              </div>
+
+              <span class="text-[10px] font-mono text-[#E30071] bg-[#E30071]/15 px-2.5 py-1 rounded-full border border-[#E30071]/30 font-bold">
+
+                ORBYT ACCELERATOR
+
+              </span>
+
+            </div>
+
+
+
+            <h3 class="text-2xl font-serif font-bold text-white mb-3">Scale / Orbyt</h3>
+
+            <p class="text-white/70 text-sm leading-relaxed mb-6 font-sans">
+
+              Our AI-enabled networking platform. 100 founding places. 77 remaining. The network that moves you forward. Direct clinical pilot access, 1-on-1 matchmaking, and hospital sandbox integrations.
+
+            </p>
+
+          </div>
+
+
+
+          <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+
+            <span class="text-xs text-[#E30071] font-mono font-semibold">77 places left</span>
+
+            <a href="#orbyt" class="text-xs font-mono uppercase tracking-wider text-[#E30071] group-hover:text-pink-300 flex items-center gap-1 font-bold">
+
+              Apply for Orbyt <span>â†—</span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================== IMPACT STORIES SECTION ==================== -->
+
+  <section id="stories" class="py-24 bg-[#080C18] px-6 sm:px-10 lg:px-16 relative overflow-hidden">
+
+    <!-- Ambient glow center right -->
+
+    <div class="absolute top-1/3 -right-36 w-[550px] h-[550px] hero-glow-purple pointer-events-none blur-[140px] opacity-60"></div>
+
+
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+      
+
+      <!-- Section Header -->
+
+      <div class="text-center max-w-3xl mx-auto mb-16">
+
+        <span class="text-xs font-mono font-bold tracking-[0.25em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#E30071] via-purple-300 to-[#7F30D0]">
+
+          COMMUNITY MOMENTS
+
+        </span>
+
+        <h2 class="font-serif text-4xl sm:text-5xl font-normal text-white mt-3">
+
+          The moments that make THC worth it
+
+        </h2>
+
+        <p class="text-white/60 text-base sm:text-lg mt-3 font-sans">
+
+          Real breakthroughs happening quietly in our WhatsApp groups, city dinners, and closed sessions.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- 4 Dark Glass Quote Cards -->
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        
+
+        <!-- Card 1: Founder -->
+
+        <div class="glass-card-quote rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+
+          <div>
+
+            <div class="w-8 h-8 rounded-full bg-[#E30071]/15 text-[#E30071] flex items-center justify-center font-serif text-xl mb-4 font-bold">“</div>
+
+            <p class="text-white/90 text-sm font-sans italic leading-relaxed mb-6">
+
+              "The founder who found their first hospital introduction through a THC connection."
+
+            </p>
+
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+
+            <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs font-bold text-white">AV</div>
+
+            <div>
+
+              <p class="text-xs font-semibold text-white">Dr. Akshay V.</p>
+
+              <p class="text-[10px] font-mono text-[#E30071] uppercase">Founder, OncoAI</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Card 2: Clinician -->
+
+        <div class="glass-card-quote rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+
+          <div>
+
+            <div class="w-8 h-8 rounded-full bg-[#7F30D0]/15 text-[#7F30D0] flex items-center justify-center font-serif text-xl mb-4 font-bold">“</div>
+
+            <p class="text-white/90 text-sm font-sans italic leading-relaxed mb-6">
+
+              "The clinician who met another clinician and started working together on digital therapeutics."
+
+            </p>
+
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+
+            <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs font-bold text-white">RS</div>
+
+            <div>
+
+              <p class="text-xs font-semibold text-white">Dr. Radhika Sen</p>
+
+              <p class="text-[10px] font-mono text-purple-400 uppercase">Clinician & Co-founder</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Card 3: Investor -->
+
+        <div class="glass-card-quote rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+
+          <div>
+
+            <div class="w-8 h-8 rounded-full bg-cyan-500/15 text-cyan-400 flex items-center justify-center font-serif text-xl mb-4 font-bold">“</div>
+
+            <p class="text-white/90 text-sm font-sans italic leading-relaxed mb-6">
+
+              "The investor who discovered a company they had never heard of at our Bengaluru breakfast."
+
+            </p>
+
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+
+            <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs font-bold text-white">KM</div>
+
+            <div>
+
+              <p class="text-xs font-semibold text-white">Karan Mehta</p>
+
+              <p class="text-[10px] font-mono text-cyan-400 uppercase">Partner, Health Fund</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Card 4: Hospital Leader -->
+
+        <div class="glass-card-quote rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+
+          <div>
+
+            <div class="w-8 h-8 rounded-full bg-amber-500/15 text-amber-400 flex items-center justify-center font-serif text-xl mb-4 font-bold">“</div>
+
+            <p class="text-white/90 text-sm font-sans italic leading-relaxed mb-6">
+
+              "The hospital leader who found a solution to a chronic ICU monitoring problem they had been struggling with."
+
+            </p>
+
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex items-center gap-3">
+
+            <div class="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-xs font-bold text-white">SR</div>
+
+            <div>
+
+              <p class="text-xs font-semibold text-white">Sangeeta Rao</p>
+
+              <p class="text-[10px] font-mono text-amber-400 uppercase">COO, Apex Hospital Group</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+      <!-- Live Activity Scrolling Ticker -->
+
+      <div class="mt-14 rounded-full bg-white/[0.02] border border-white/10 py-3.5 px-6 overflow-hidden relative">
+
+        <div class="flex items-center gap-3 text-xs font-mono">
+
+          <div class="flex items-center gap-1.5 shrink-0 pr-4 border-r border-white/10 text-[#E30071] font-bold">
+
+            <span class="w-2 h-2 rounded-full bg-[#E30071] animate-ping"></span>
+
+            LIVE WIRE
+
+          </div>
+
+          <div class="flex w-[200%] animate-marquee space-x-8 text-white/60 whitespace-nowrap">
+
+            <span>â€¢ a founder got their first hospital intro in Mumbai</span>
+
+            <span>â€¢ a clinician found a co-founder for a cardio AI venture</span>
+
+            <span>â€¢ a tier-1 VC discovered an unannounced diagnostics company</span>
+
+            <span>â€¢ an ICU network deployed telemetry sandbox in Bengaluru</span>
+
+            <span>â€¢ closed roundtable concluded with 3 pilot agreements signed</span>
+
+            <!-- Repeat -->
+
+            <span>â€¢ a founder got their first hospital intro in Mumbai</span>
+
+            <span>â€¢ a clinician found a co-founder for a cardio AI venture</span>
+
+            <span>â€¢ a tier-1 VC discovered an unannounced diagnostics company</span>
+
+            <span>â€¢ an ICU network deployed telemetry sandbox in Bengaluru</span>
+
+            <span>â€¢ closed roundtable concluded with 3 pilot agreements signed</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================== ORBYT SECTION (PURE BLACK + ORBITAL RINGS) ==================== -->
+
+  <section id="orbyt" class="relative py-32 bg-[#03060c] px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-b border-white/10">
+
+    
+
+    <!-- SVG Orbital Rings in BG -->
+
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+
+      <svg class="w-[900px] h-[900px] animate-spin-slow" viewBox="0 0 800 800" fill="none" stroke="currentColor">
+
+        <ellipse cx="400" cy="400" rx="380" ry="120" stroke="url(#ring-gradient)" stroke-width="1.5" stroke-dasharray="6 8" transform="rotate(-25 400 400)" />
+
+        <ellipse cx="400" cy="400" rx="300" ry="90" stroke="rgba(255, 69, 0, 0.4)" stroke-width="1" transform="rotate(35 400 400)" />
+
+        <ellipse cx="400" cy="400" rx="220" ry="70" stroke="rgba(227, 0, 113, 0.5)" stroke-width="1.5" stroke-dasharray="4 6" transform="rotate(-60 400 400)" />
+
+        <defs>
+
+          <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+
+            <stop offset="0%" stop-color="#FF4500" />
+
+            <stop offset="50%" stop-color="#E30071" />
+
+            <stop offset="100%" stop-color="#7F30D0" />
+
+          </linearGradient>
+
+        </defs>
+
+      </svg>
+
+    </div>
+
+
+
+    <!-- Red-Orange Atmospheric Glow -->
+
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(255,69,0,0.18)_0%,rgba(227,0,113,0.08)_45%,transparent_75%)] blur-[90px] pointer-events-none"></div>
+
+
+
+    <div class="max-w-5xl mx-auto relative z-10 text-center space-y-7">
+
+      
+
+      <!-- Label -->
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FF4500]/10 border border-[#FF4500]/30 backdrop-blur-md">
+
+        <span class="w-2 h-2 rounded-full bg-[#FF4500] animate-pulse"></span>
+
+        <span class="text-xs font-mono font-bold tracking-[0.25em] text-[#FF4500] uppercase">SCALE</span>
+
+      </div>
+
+
+
+      <!-- H2 -->
+
+      <h2 class="font-serif text-5xl sm:text-6xl lg:text-[68px] font-normal text-white tracking-tight leading-tight">
+
+        Meet Orbyt.
+
+      </h2>
+
+
+
+      <!-- Sub -->
+
+      <p class="text-xl sm:text-2xl font-serif italic text-white/90 max-w-2xl mx-auto">
+
+        The network that moves you forward.
+
+      </p>
+
+
+
+      <!-- Body -->
+
+      <p class="text-white/60 font-sans text-base sm:text-lg max-w-xl mx-auto">
+
+        Ambition is common. Consistency is rare. The people, accountability, and access that keep you moving forward in healthcare.
+
+      </p>
+
+
+
+      <!-- Scarcity Badge -->
+
+      <div class="inline-block pt-2">
+
+        <div class="px-5 py-2 rounded-full bg-white/5 border border-white/15 text-xs font-mono text-white/80">
+
+          <span class="text-[#FF4500] font-bold">77 founding places remaining</span> · Applications strictly curated
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CTA Button: Orange to Pink Gradient -->
+
+      <div class="pt-4 flex justify-center">
+
+        <a href="#join-orbyt" class="px-10 py-4 rounded-full bg-gradient-to-r from-[#FF4500] via-[#E30071] to-[#FF4500] bg-size-200 hover:bg-right hover:scale-105 transition-all duration-300 text-white font-bold text-base tracking-wide shadow-2xl shadow-[#FF4500]/30 flex items-center gap-3">
+
+          <span>Apply for Orbyt Founding Cohort</span>
+
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+        </a>
+
+      </div>
+
+
+
+      <!-- Orbyt Pillars Grid -->
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-12 text-left max-w-4xl mx-auto">
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
+
+          <p class="text-xs font-mono text-[#FF4500] uppercase tracking-wider mb-1">PILLAR 01</p>
+
+          <h4 class="text-sm font-bold text-white mb-1.5">1-on-1 Matchmaking</h4>
+
+          <p class="text-xs text-white/50 leading-relaxed">Algorithmic and hand-curated matching between healthcare builders and specialized advisors.</p>
+
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
+
+          <p class="text-xs font-mono text-[#FF4500] uppercase tracking-wider mb-1">PILLAR 02</p>
+
+          <h4 class="text-sm font-bold text-white mb-1.5">Hospital Pilot Fast-Track</h4>
+
+          <p class="text-xs text-white/50 leading-relaxed">Pre-negotiated sandbox access with Tier-1 and Tier-2 hospital chains across India.</p>
+
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
+
+          <p class="text-xs font-mono text-[#FF4500] uppercase tracking-wider mb-1">PILLAR 03</p>
+
+          <h4 class="text-sm font-bold text-white mb-1.5">Closed Peer Circles</h4>
+
+          <p class="text-xs text-white/50 leading-relaxed">Bi-weekly unrecorded peer circles on revenue, clinical trial design, and investor rounds.</p>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================== CITY CHAPTERS STRIP ==================== -->
+
+  <section id="chapters" class="py-20 bg-[#080C18] px-6 sm:px-10 lg:px-16 border-b border-white/10">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+
+        <div>
+
+          <span class="text-xs font-mono font-bold tracking-[0.2em] text-[#E30071] uppercase">NATIONAL FOOTPRINT</span>
+
+          <h2 class="font-serif text-3xl sm:text-4xl text-white mt-2">5 Active City Chapters</h2>
+
+        </div>
+
+        <p class="text-white/50 text-sm max-w-md font-sans">
+
+          Physical dinners, hospital walkthroughs, and thesis discussions happen monthly in India's key healthtech capitals.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+
+        <!-- City 1 -->
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">
+
+          <span class="text-[10px] font-mono text-white/40 uppercase">Chapter 01</span>
+
+          <h4 class="text-lg font-serif font-bold text-white mt-1">Bengaluru</h4>
+
+          <p class="text-xs text-white/50 font-mono mt-2">2,800+ Members</p>
+
+        </div>
+
+        <!-- City 2 -->
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">
+
+          <span class="text-[10px] font-mono text-white/40 uppercase">Chapter 02</span>
+
+          <h4 class="text-lg font-serif font-bold text-white mt-1">Delhi NCR</h4>
+
+          <p class="text-xs text-white/50 font-mono mt-2">1,900+ Members</p>
+
+        </div>
+
+        <!-- City 3 -->
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">
+
+          <span class="text-[10px] font-mono text-white/40 uppercase">Chapter 03</span>
+
+          <h4 class="text-lg font-serif font-bold text-white mt-1">Mumbai</h4>
+
+          <p class="text-xs text-white/50 font-mono mt-2">1,200+ Members</p>
+
+        </div>
+
+        <!-- City 4 -->
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">
+
+          <span class="text-[10px] font-mono text-white/40 uppercase">Chapter 04</span>
+
+          <h4 class="text-lg font-serif font-bold text-white mt-1">Hyderabad</h4>
+
+          <p class="text-xs text-white/50 font-mono mt-2">650+ Members</p>
+
+        </div>
+
+        <!-- City 5 -->
+
+        <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors col-span-2 sm:col-span-1">
+
+          <span class="text-[10px] font-mono text-white/40 uppercase">Chapter 05</span>
+
+          <h4 class="text-lg font-serif font-bold text-white mt-1">Ahmedabad</h4>
+
+          <p class="text-xs text-white/50 font-mono mt-2">450+ Members</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================== FINAL CTA SECTION ==================== -->
+
+  <section id="join" class="relative py-32 bg-[#0D1B3E] px-6 sm:px-10 lg:px-16 text-center overflow-hidden">
+
+    <!-- Atmospheric glows -->
+
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] hero-glow-pink pointer-events-none blur-[150px] opacity-70"></div>
+
+    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] hero-glow-purple pointer-events-none blur-[140px] opacity-60"></div>
+
+
+
+    <div class="max-w-4xl mx-auto relative z-10 space-y-8">
+
+      
+
+      <!-- Quote -->
+
+      <blockquote class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal text-white leading-tight italic">
+
+        “The best of THC is still ahead of us.”
+
+      </blockquote>
+
+
+
+      <!-- Attribution -->
+
+      <div class="space-y-1">
+
+        <p class="text-xs font-mono uppercase tracking-[0.25em] text-white/70 font-semibold">
+
+          Parul Aggarwal, Founder
+
+        </p>
+
+        <p class="text-xs text-white/40 font-mono">
+
+          The Healthtech Collective
+
+        </p>
+
+      </div>
+
+
+
+      <!-- Action Buttons -->
+
+      <div class="pt-6 flex flex-wrap items-center justify-center gap-4">
+
+        <!-- Join Community (Pink) -->
+
+        <a href="#join-form" class="px-9 py-4 rounded-full bg-[#E30071] hover:bg-[#ff0080] text-white font-bold text-sm tracking-wide shadow-xl shadow-[#E30071]/35 transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2">
+
+          <span>Join the Community</span>
+
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+        </a>
+
+
+
+        <!-- Explore Signals (Ghost White) -->
+
+        <a href="#signals" class="px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/20 hover:border-white/40 text-white font-medium text-sm tracking-wide backdrop-blur-md transition-all duration-200 flex items-center gap-2">
+
+          <span>Explore Signals</span>
+
+          <span class="text-white/60">â†—</span>
+
+        </a>
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ==================== FOOTER ==================== -->
+
+  <footer class="bg-[#080C18] border-t border-white/10 py-16 px-6 sm:px-10 lg:px-16 text-sm text-white/50">
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+
+      
+
+      <div class="space-y-2 text-center md:text-left">
+
+        <div class="flex items-center justify-center md:justify-start gap-2">
+
+          <span class="w-2 h-2 rounded-full bg-[#E30071]"></span>
+
+          <span class="font-serif font-bold text-lg text-white">The Healthtech Collective</span>
+
+        </div>
+
+        <p class="text-xs text-white/40">
+
+          Â© 2025 The Healthtech Collective. All rights reserved. India's largest healthtech builder community.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="flex flex-wrap justify-center gap-6 text-xs font-mono uppercase tracking-wider text-white/60">
+
+        <a href="#" class="hover:text-white transition-colors">Manifesto</a>
+
+        <a href="#chapters" class="hover:text-white transition-colors">Chapters</a>
+
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+
+        <a href="#" class="hover:text-white transition-colors">Code of Conduct</a>
+
+        <a href="#" class="hover:text-white transition-colors">Contact</a>
+
+      </div>
+
+
+
+    </div>
+
+  </footer>
+
+
+
+</body>
+
+</html>
+
+
+

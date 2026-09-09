@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+<html class="scroll-smooth snap-y snap-proximity" lang="en"><head>
+
+
+
+<meta charset="utf-8"/>
+
+
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+
+<title>The Healthtech Collective | India's Largest Healthtech Community</title>
+
+
+
+<!-- Google Fonts: Playfair Display for editorial headlines, DM Sans for body typography -->
+
+
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+
+
+
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Public+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+
+
+<!-- Material Symbols Outlined -->
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+
+
+<!-- Tailwind CSS via CDN -->
+
+
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
+
+<script id="tailwind-config">
+
+
+
+    tailwind.config = {
+
+
+
+      darkMode: "class",
+
+
+
+      theme: {
+
+
+
+        extend: {
+          animation: {
+            'spin-slow': 'spin 40s linear infinite',
+          },
+
+
+
+          colors: {
+
+
+
+            surface: "#FAF7F2",
+
+
+
+            "on-surface": "#0F0E0D",
+
+
+
+            "on-surface-variant": "#4A4744",
+
+
+
+            primary: "#E30071",
+
+
+
+            "on-primary": "#FFFFFF",
+
+
+
+            navy: "#0D1B3E",
+
+
+
+            orbyt: "#FF4500",
+
+
+
+            "outline-variant": "#0F0E0D"
+
+
+
+          },
+
+
+
+          borderRadius: {
+
+
+
+            "DEFAULT": "0.5rem",
+
+
+
+            "lg": "1rem",
+
+
+
+            "xl": "1.5rem",
+
+
+
+            "full": "9999px"
+
+
+
+          },
+
+
+
+          fontFamily: {
+
+
+
+            headline: ["Public Sans", "sans-serif"],
+
+
+
+            display: ["Playfair Display", "serif"],
+
+
+
+            serif: ["Playfair Display", "serif"],
+
+
+
+            body: ["DM Sans", "sans-serif"],
+
+
+
+            label: ["Public Sans", "sans-serif"]
+
+
+
+          }
+
+
+
+        },
+
+
+
+      },
+
+
+
+    }
+
+
+
+  </script>
+
+
+
+<style>
+
+
+
+    @keyframes marquee {
+
+
+
+      0% { transform: translateX(0%); }
+
+
+
+      100% { transform: translateX(-50%); }
+
+
+
+    }
+
+
+
+    .animate-marquee {
+
+
+
+      display: flex;
+
+
+
+      width: 200%;
+
+
+
+      animation: marquee 32s linear infinite;
+
+
+
+    }
+
+
+
+    .animate-marquee:hover {
+
+
+
+      animation-play-state: paused;
+
+
+
+    }
+
+
+
+    .mask-fade {
+
+
+
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+
+
+
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+
+
+
+    }
+
+
+
+    ::selection {
+
+
+
+      background-color: #E30071;
+
+
+
+      color: #FAF7F2;
+
+
+
+    }
+
+
+
+  
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+
+
+</head>
+
+
+
+<body class="bg-white text-[#0F0E0D] font-body selection:bg-[#E30071] selection:text-white antialiased overflow-x-hidden relative">
+<!-- Graph paper background -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.04] z-0" style="background-image: linear-gradient(#0F0E0D 1px, transparent 1px), linear-gradient(90deg, #0F0E0D 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="fixed inset-0 pointer-events-none opacity-20 z-0" style="background: radial-gradient(circle at 50% 0%, rgba(227,0,113,0.08) 0%, transparent 70%);"></div>
+
+
+
+<!-- =========================================================================
+
+
+
+       1. FLOATING NAVIGATION BAR (Shared Component Anchor translated faithfully)
+
+
+
+       ========================================================================= -->
+
+
+
+<nav class="fixed top-6 inset-x-0 mx-auto max-w-5xl rounded-full bg-[#FAF7F2]/85 dark:bg-surface/80 backdrop-blur-md border border-[#0F0E0D]/10 shadow-lg shadow-[#0F0E0D]/5 flex justify-between items-center px-6 py-3 w-full z-50 transition-all duration-[300ms] ease-out">
+
+
+
+<!-- Brand Wordmark Stack -->
+
+
+
+<a class="flex flex-col leading-tight group" href="#">
+
+
+
+<span class="text-xs font-bold tracking-[0.25em] text-[#0F0E0D]/60 uppercase font-headline">The</span>
+
+
+
+<span class="text-[15px] font-black tracking-tight text-[#0F0E0D] uppercase font-headline">Healthtech</span>
+
+
+
+<span class="text-xs font-medium tracking-[0.2em] text-[#0F0E0D]/80 uppercase font-headline">Collective</span>
+
+
+
+</a>
+
+
+
+<!-- Center Navigation Links -->
+
+
+
+<div class="hidden md:flex items-center gap-8 font-body text-sm font-medium tracking-wide">
+
+
+
+<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out flex items-center gap-1" href="#signals">
+
+
+
+        Signals <span class="text-xs opacity-60">▾</span>
+
+
+
+</a>
+
+
+
+<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out flex items-center gap-1" href="#pillars">
+
+
+
+        Meet <span class="text-xs opacity-60">▾</span>
+
+
+
+</a>
+
+
+
+<a class="text-[#0F0E0D]/70 hover:text-[#0F0E0D] transition-colors duration-[250ms] ease-out flex items-center gap-1" href="#orbyt">
+
+
+
+        Scale <span class="text-xs opacity-60">▾</span>
+
+
+
+</a>
+
+
+
+</div>
+
+
+
+<!-- Trailing Action: Join THC / Community (Strict Single Pink Accent in Nav) -->
+
+
+
+<div class="flex items-center gap-3">
+
+
+
+<a class="bg-[#FF4500] hover:bg-[#E03E00] shadow-lg shadow-[#FF4500]/20 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-wide active:scale-[0.97] transition-all duration-150 ease-out inline-flex items-center gap-1.5" href="#join">
+<span>Join THC</span>
+
+
+
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+
+
+
+</a>
+
+
+
+</div>
+
+
+
+</nav>
+
+
+
+<!-- =========================================================================
+
+
+
+       2. HERO SECTION
+
+
+
+       ========================================================================= -->
+
+
+
+<section class="snap-start min-h-[942px] pt-36 pb-20 px-8 flex items-center bg-[#FAF7F2] relative overflow-hidden">
+
+
+
+
+
+
+
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
+
+
+
+<!-- Left Column (7 cols) -->
+
+
+
+<div class="md:col-span-7 flex flex-col items-start">
+
+
+
+<!-- Community Badge -->
+
+
+
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F0E0D]/5 border border-[#0F0E0D]/10 text-xs font-bold tracking-[0.08em] uppercase text-[#0F0E0D]/70 mb-6 font-headline">
+
+
+
+<span class="w-2 h-2 rounded-full bg-[#E30071] animate-ping"></span>
+
+
+
+          INDIA'S LARGEST HEALTHTECH COMMUNITY
+
+
+
+        </div>
+
+
+
+<!-- Editorial H1 -->
+
+
+
+<h1 class="font-serif text-5xl sm:text-6xl lg:text-[70px] leading-[1.06] text-[#0F0E0D] tracking-tight font-normal relative">
+          <!-- Animated Doctor Cross + Tech Graphic -->
+          <div class="relative inline-flex mb-8 md:mb-0 md:absolute md:-top-16 md:-left-4 items-center justify-center gap-1.5 px-3 py-1.5 bg-white shadow-xl shadow-pink-500/10 rounded-full border border-pink-100 rotate-[-4deg] animate-[bounce_3s_infinite] z-20">
+            <span class="text-[#E30071] text-xl font-black leading-none">+</span>
+            <span class="text-xs font-bold text-[#0F0E0D]/40 uppercase tracking-widest">x</span>
+            <span class="font-headline font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 tracking-wide text-xs">TECH</span>
+          </div>
+
+          Welcome to <br class="hidden sm:block">India's largest <br>
+          <span class="relative inline-block italic font-serif pr-2 text-transparent bg-clip-text bg-gradient-to-r from-[#E30071] to-[#7F30D0]">
+            healthtech
+          </span>
+          community
+        </h1>
+
+
+
+<!-- Subtext -->
+
+
+
+<p class="font-body text-lg sm:text-xl text-[#0F0E0D]/70 max-w-xl leading-relaxed mt-7">
+
+
+
+          Join 7,000+ members — building the future of healthcare in India through direct distribution, clinical pilot access, and closed-door rooms.
+
+
+
+        </p>
+
+
+
+<!-- CTA Cluster -->
+
+
+
+<div class="mt-9 flex flex-wrap items-center gap-4">
+
+
+
+<a class="bg-[#E30071] text-white font-medium text-base px-8 py-3.5 rounded-full shadow-lg shadow-[#E30071]/25 hover:bg-[#c90064] active:scale-[0.97] transition-transform duration-150 ease-out transition-all inline-flex items-center gap-2.5" href="#join">
+
+
+
+<span>Join the Community</span>
+
+
+
+<span class="material-symbols-outlined text-[18px]">group_add</span>
+
+
+
+</a>
+
+
+
+<a class="border border-[#0F0E0D]/20 hover:border-[#0F0E0D] text-[#0F0E0D] font-medium text-base px-8 py-3.5 rounded-full hover:bg-[#0F0E0D]/5 active:scale-[0.97] transition-transform duration-150 ease-out transition-all inline-flex items-center gap-2" href="#signals">
+
+
+
+<span>Explore Signals</span>
+
+
+
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+
+
+
+</a>
+
+
+
+</div>
+
+
+
+<!-- Micro Social Proof below CTAs -->
+
+
+
+<div class="mt-8 flex items-center gap-4 text-xs text-[#0F0E0D]/60">
+
+
+
+<div class="flex -space-x-2">
+
+
+
+<div class="w-7 h-7 rounded-full bg-[#0D1B3E] text-white flex items-center justify-center font-bold text-xs border-2 border-[#FAF7F2]">DR</div>
+
+
+
+<div class="w-7 h-7 rounded-full bg-[#E30071] text-white flex items-center justify-center font-bold text-xs border-2 border-[#FAF7F2]">AI</div>
+
+
+
+<div class="w-7 h-7 rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-xs border-2 border-[#FAF7F2]">VC</div>
+
+
+
+</div>
+
+
+
+<span>Curated ecosystem • Active across 5 cities</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- Right Column (5 cols) - Interactive Editorial Card Stack -->
+
+
+
+<div class="md:col-span-5 relative">
+
+
+
+<div class="relative bg-white/80 backdrop-blur-md border border-[#0F0E0D]/10 rounded-3xl p-8 shadow-xl shadow-[#0F0E0D]/5">
+
+
+
+<!-- Main Hero Image Context -->
+
+
+
+<div class="relative w-full h-56 rounded-2xl overflow-hidden mb-6 border border-[#0F0E0D]/10 bg-[#FAF7F2]">
+
+
+
+<img class="w-full h-full object-cover" data-alt="A sophisticated editorial photograph of diverse Indian healthcare innovators and doctors collaborating closely around a sleek wooden conference table in a sunlit Bangalore innovation studio. Natural warm lighting highlights thoughtful discussion, notebooks, medical technology devices, and espresso cups. The overall visual aesthetic is polished, warm cream, high-end editorial and authentic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbCi-vTvjtB4c31Ke7F06WWpuW5Fu5Yw1PbtGViL-GhHp_MTtRpX6e6JFZlGKiCGAgxWxhMuhgBYNWBEw52JZuz6RSMRosXP4QBhW7_Oedzl5F5xKfM5DPLqVOhwYkKzOtAFllFE6mrknGFIXV_VuNWUxwbYtVCXbGDIBcEBGv-HiqPgi9bQXpQ2yThhuB70aXHwmbizU_MzjwN3gKEblQh3aMeNKYbRkw_Qtr4bd7zDgKIyQ_VyToLRW9MIe1mTvRzIIViu_lmARZ"/>
+
+
+
+<div class="absolute top-3 left-3 bg-[#FAF7F2]/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#0F0E0D]/10 text-xs font-bold tracking-wider text-[#0F0E0D] uppercase font-headline">
+
+
+
+              CLOSED-DOOR ROUNDTABLE #42
+
+
+
+            </div>
+
+
+
+</div>
+
+
+
+<!-- Stat Matrix Grid -->
+
+
+
+<div class="grid grid-cols-3 gap-4 pb-6 border-b border-[#0F0E0D]/10 text-center">
+
+
+
+<div>
+
+
+
+<div class="font-serif text-2xl font-bold text-[#E30071]"><span class="counter" data-target="7000">0</span>+</div>
+
+
+
+<div class="text-xs uppercase tracking-wider text-[#0F0E0D]/60 font-semibold font-headline mt-1">Members</div>
+
+
+
+</div>
+
+
+
+<div class="border-x border-[#0F0E0D]/10">
+
+
+
+<div class="font-serif text-2xl font-bold text-[#7F30D0]"><span class="counter" data-target="80">0</span>+</div>
+
+
+
+<div class="text-xs uppercase tracking-wider text-[#0F0E0D]/60 font-semibold font-headline mt-1">Curated Events</div>
+
+
+
+</div>
+
+
+
+<div>
+
+
+
+<div class="font-serif text-2xl font-bold text-blue-600"><span class="counter" data-target="5">0</span></div>
+
+
+
+<div class="text-xs uppercase tracking-wider text-[#0F0E0D]/60 font-semibold font-headline mt-1">Chapters</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- Chapters Footprint -->
+
+
+
+<div class="mt-5 flex flex-wrap items-center justify-between gap-2">
+
+
+
+<span class="text-xs font-medium text-[#0F0E0D]/70">Active Chapters:</span>
+
+
+
+<span class="text-xs font-semibold text-[#0F0E0D]">BLR • DEL • BOM • HYD • MAA</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- Floating Scarcity Pill Badge -->
+
+
+
+<div class="absolute -bottom-5 -left-4 bg-[#0D1B3E] text-white px-4 py-2.5 rounded-full text-xs font-semibold shadow-lg shadow-[#0D1B3E]/30 flex items-center gap-2 border border-white/10">
+
+
+
+<span class="text-base">🔥</span>
+
+
+
+<span>77/100 Orbyt founding spots left</span>
+
+
+
+</div>
+
+
+
+<!-- Floating Clinician tag badge top right -->
+
+
+
+<div class="absolute -top-4 -right-3 bg-white border border-[#0F0E0D]/10 text-[#0F0E0D] px-3.5 py-1.5 rounded-full text-xs font-medium shadow-md flex items-center gap-2">
+
+
+
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+
+
+
+<span>Clinician-Founder Sync Live</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- =========================================================================
+
+
+
+       3. SOCIAL PROOF LOGO STRIP (Marquee)
+
+
+
+       ========================================================================= -->
+
+
+
+<section class="snap-start bg-[#FAF7F2] py-14 border-y border-[#0F0E0D]/10 overflow-hidden">
+
+
+
+<div class="max-w-7xl mx-auto px-8 mb-6 text-center">
+
+
+
+<span class="block uppercase text-[#E30071] text-xs font-bold tracking-[0.15em] mb-2 font-headline">Community</span>
+
+
+
+<h3 class="text-xl md:text-2xl font-medium text-[#0F0E0D]">
+
+
+
+        Join 7,000+ healthtech leaders from across the ecosystem
+
+
+
+      </h3>
+
+
+
+</div>
+
+
+
+<!-- Infinite Marquee with linear fade masks -->
+
+
+
+<div class="relative w-full overflow-hidden mask-fade py-3">
+
+
+
+<div class="animate-marquee flex items-center gap-12 whitespace-nowrap">
+
+
+
+<!-- Logo Text Badges Loop 1 -->
+
+
+
+<div class="flex items-center gap-12 text-[#0F0E0D]/70 font-headline font-bold text-lg tracking-tight">
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#0D1B3E]"></span>Apollo Hospitals</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-600"></span>Practo</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-rose-600"></span>HealthifyMe</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-500"></span>Tata 1mg</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span>Qure.ai</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-500"></span>PharmEasy</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-600"></span>Max Healthcare</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-800"></span>Accel Health</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-purple-600"></span>Matrix Partners</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-teal-600"></span>Blume Ventures</span>
+
+
+
+</div>
+
+
+
+<!-- Logo Text Badges Loop 2 (Duplicate for Seamless Marquee) -->
+
+
+
+<div class="flex items-center gap-12 text-[#0F0E0D]/70 font-headline font-bold text-lg tracking-tight">
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#0D1B3E]"></span>Apollo Hospitals</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-600"></span>Practo</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-rose-600"></span>HealthifyMe</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-500"></span>Tata 1mg</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500"></span>Qure.ai</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-indigo-500"></span>PharmEasy</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-600"></span>Max Healthcare</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-slate-800"></span>Accel Health</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-purple-600"></span>Matrix Partners</span>
+
+
+
+<span class="px-5 py-2.5 rounded-xl bg-white/60 border border-[#0F0E0D]/10 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-teal-600"></span>Blume Ventures</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- =========================================================================
+
+
+
+       4. PILLARS SECTION (Stark Contrast: Ink-Dark Navy #0D1B3E)
+
+
+
+       ========================================================================= -->
+
+
+
+<section class="snap-start bg-[#0D1B3E] py-28 px-8 text-white relative overflow-hidden" id="pillars">
+
+
+
+<!-- Ambient radial glow behind cards -->
+
+
+
+<div class="absolute -top-40 -right-40 w-96 h-96 bg-[#7F30D0]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+
+
+<div class="absolute -bottom-40 -left-40 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+
+
+<div class="max-w-7xl mx-auto relative z-10">
+
+
+
+<!-- Section Header -->
+
+
+
+<div class="max-w-3xl">
+
+
+
+<span class="text-cyan-300 uppercase text-xs font-bold tracking-[0.15em] block mb-3 font-headline">What We Do</span>
+
+
+
+<h2 class="font-serif text-4xl sm:text-5xl font-normal text-white leading-tight">
+
+
+
+          Everything you need to build in healthtech
+
+
+
+        </h2>
+
+
+
+<p class="text-white/70 text-lg sm:text-xl mt-4 leading-relaxed font-body">
+
+
+
+          Healthcare is hard. Distribution, clinical validation, and regulation require specialized networks, not generic advice.
+
+
+
+        </p>
+
+
+
+</div>
+
+
+
+<!-- Vertical Steps Grid -->
+<div class="flex flex-col gap-32 mt-20" id="signals">
+
+  <!-- Step 1: Signals -->
+  <div class="flex flex-col md:flex-row items-center gap-12 group step-container">
+    <!-- Image -->
+    <div class="w-full md:w-1/2 order-2 md:order-1 opacity-0 translate-y-12 scale-95 transition-all duration-[1200ms] ease-out observer-element">
+      <div class="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl shadow-cyan-500/10 border border-white/10 group-hover:border-cyan-400/40 transition-colors duration-500">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms] ease-out" alt="Intelligence and Data" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="w-full md:w-1/2 order-1 md:order-2 opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out delay-200 observer-element">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-300">
+          <span class="material-symbols-outlined text-[24px]">radar</span>
+        </div>
+        <span class="text-xs uppercase font-bold tracking-[0.15em] text-cyan-400 font-headline bg-cyan-400/10 px-3 py-1 rounded-full border border-cyan-400/20">
+          Intelligence
+        </span>
+      </div>
+      <h3 class="font-serif text-[44px] text-white mb-6 font-normal tracking-tight">Signals</h3>
+      <p class="text-white/70 text-lg leading-relaxed font-body mb-8">
+        Curated insights, newsletters, and thought leadership from across the Indian healthcare ecosystem. Weekly breakdowns of regulatory shifts, deal memos, and clinical tech benchmarks.
+      </p>
+      <a class="text-cyan-300 hover:text-cyan-200 text-base font-semibold inline-flex items-center tracking-wide gap-1.5 transition-colors" href="#signals">
+        <span>Read Signals</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Step 2: Meet -->
+  <div class="flex flex-col md:flex-row items-center gap-12 group step-container">
+    <!-- Content -->
+    <div class="w-full md:w-1/2 order-1 md:order-1 opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out observer-element">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-amber-300/10 border border-amber-300/20 flex items-center justify-center text-amber-200">
+          <span class="material-symbols-outlined text-[24px]">meeting_room</span>
+        </div>
+        <span class="text-xs uppercase font-bold tracking-[0.15em] text-amber-300 font-headline bg-amber-300/10 px-3 py-1 rounded-full border border-amber-300/20">
+          Curated Sessions
+        </span>
+      </div>
+      <h3 class="font-serif text-[44px] text-white mb-6 font-normal tracking-tight">
+        Meet the best builders<br>
+        <span class="relative inline-block italic font-serif pr-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">
+          wherever you are
+        </span>
+      </h3>
+      <p class="text-white/70 text-lg leading-relaxed font-body mb-8">
+        Curated rooms. Smaller groups. The right founder meets the right investor and hospital CXO. Zero fluff, Chatham House rules, and high-impact partnership discussions.
+      </p>
+      <a class="text-amber-300 hover:text-amber-200 text-base font-semibold inline-flex items-center tracking-wide gap-1.5 transition-colors" href="#meet">
+        <span>Explore upcoming meetups</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+      </a>
+    </div>
+    <!-- Image -->
+    <div class="w-full md:w-1/2 order-2 md:order-2 opacity-0 translate-y-12 scale-95 transition-all duration-[1200ms] ease-out delay-200 observer-element">
+      <div class="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl shadow-amber-500/10 border border-white/10 group-hover:border-amber-400/40 transition-colors duration-500">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms] ease-out" alt="Curated Meetings" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Scale -->
+  <div class="flex flex-col md:flex-row items-center gap-12 group step-container">
+    <!-- Image -->
+    <div class="w-full md:w-1/2 order-2 md:order-1 opacity-0 translate-y-12 scale-95 transition-all duration-[1200ms] ease-out observer-element">
+      <div class="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl shadow-purple-500/10 border border-white/10 group-hover:border-purple-400/40 transition-colors duration-500">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms] ease-out" alt="Scaling Operations" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div class="w-full md:w-1/2 order-1 md:order-2 opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out delay-200 observer-element">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-purple-400/10 border border-purple-400/20 flex items-center justify-center text-purple-300">
+          <span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+        </div>
+        <span class="text-xs uppercase font-bold tracking-[0.15em] text-purple-400 font-headline bg-purple-400/10 px-3 py-1 rounded-full border border-purple-400/20">
+          Orbyt Accelerator
+        </span>
+      </div>
+      <h3 class="font-serif text-[44px] text-white mb-6 font-normal tracking-tight">Scale</h3>
+      <p class="text-white/70 text-lg leading-relaxed font-body mb-8">
+        Meet Orbyt � our AI-enabled networking platform. 100 founding places. 77 remaining. Direct clinical pilot access and hospital sandbox integrations.
+      </p>
+      <a class="text-purple-300 hover:text-purple-200 text-base font-semibold inline-flex items-center tracking-wide gap-1.5 transition-colors" href="#orbyt">
+        <span>Apply for Orbyt</span>
+        <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- =========================================================================
+
+
+
+       6. ORBYT SECTION (Pure Black #000000 with Atmospheric Red-Orange Glow)
+
+
+
+       ========================================================================= -->
+
+
+
+
+<!-- =========================================================================
+       5.5 RESPECTED OPERATORS (Speakers Carousel)
+       ========================================================================= -->
+<section class="snap-start py-28 px-8 bg-[#FAF7F2] border-y border-[#0F0E0D]/10" id="speakers">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <h2 class="font-serif text-4xl sm:text-5xl text-[#0F0E0D] font-normal leading-[1.1] tracking-tight">
+        Past events & sessions have featured some of <span class="text-[#FF4500]">the most respected</span> funds and operators globally.
+      </h2>
+    </div>
+
+    <!-- Horizontal scroll container -->
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar cursor-grab active:cursor-grabbing">
+      
+      <!-- Speaker 1 -->
+      <div class="snap-start shrink-0 w-[240px] flex flex-col group">
+        <div class="w-full h-[300px] rounded-2xl overflow-hidden mb-4 bg-gray-200">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop" alt="Gaurav Soni" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-105" />
+        </div>
+        <h4 class="font-bold text-[#0F0E0D] text-lg">Gaurav Soni</h4>
+        <p class="text-[#0F0E0D]/60 text-sm font-body">Co-Founder, Lean Apps</p>
+      </div>
+
+      <!-- Speaker 2 -->
+      <div class="snap-start shrink-0 w-[240px] flex flex-col group">
+        <div class="w-full h-[300px] rounded-2xl overflow-hidden mb-4 bg-gray-200">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" alt="Dr. Amitesh Khare, MD" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-105" />
+        </div>
+        <h4 class="font-bold text-[#0F0E0D] text-lg">Dr. Amitesh Khare, MD</h4>
+        <p class="text-[#0F0E0D]/60 text-sm font-body">Chief Medical Innovation Officer</p>
+      </div>
+
+      <!-- Speaker 3 -->
+      <div class="snap-start shrink-0 w-[240px] flex flex-col group">
+        <div class="w-full h-[300px] rounded-2xl overflow-hidden mb-4 bg-gray-200">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop" alt="Dr. Saarthak Bakshi, PhD" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-105" />
+        </div>
+        <h4 class="font-bold text-[#0F0E0D] text-lg">Dr. Saarthak Bakshi, PhD</h4>
+        <p class="text-[#0F0E0D]/60 text-sm font-body">CEO, Rissa IVF</p>
+      </div>
+
+      <!-- Speaker 4 -->
+      <div class="snap-start shrink-0 w-[240px] flex flex-col group">
+        <div class="w-full h-[300px] rounded-2xl overflow-hidden mb-4 bg-gray-200">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Garvita Baldua" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-105" />
+        </div>
+        <h4 class="font-bold text-[#0F0E0D] text-lg">Garvita Baldua</h4>
+        <p class="text-[#0F0E0D]/60 text-sm font-body">Founder, SupertubosAI</p>
+      </div>
+
+      <!-- Speaker 5 -->
+      <div class="snap-start shrink-0 w-[240px] flex flex-col group">
+        <div class="w-full h-[300px] rounded-2xl overflow-hidden mb-4 bg-gray-200">
+          <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?q=80&w=600&auto=format&fit=crop" alt="Dr. Pranav Agrawal" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-105" />
+        </div>
+        <h4 class="font-bold text-[#0F0E0D] text-lg">Dr. Pranav Agrawal</h4>
+        <p class="text-[#0F0E0D]/60 text-sm font-body">Physician-Researcher</p>
+      </div>
+
+      <!-- Speaker 6 -->
+      <div class="snap-start shrink-0 w-[240px] flex flex-col group">
+        <div class="w-full h-[300px] rounded-2xl overflow-hidden mb-4 bg-gray-200">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=600&auto=format&fit=crop" alt="Vibhor Mathur" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out group-hover:scale-105" />
+        </div>
+        <h4 class="font-bold text-[#0F0E0D] text-lg">Vibhor Mathur</h4>
+        <p class="text-[#0F0E0D]/60 text-sm font-body">CxO Advisory, Dubai</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+       5.6 OUR WORK IN ACTION (Live Photos Grid)
+       ========================================================================= -->
+<section class="snap-start py-28 px-8 bg-white" id="work-in-action">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-serif text-4xl sm:text-5xl text-[#0F0E0D] font-normal leading-[1.1]">
+        Our Work <span class="italic text-[#FF4500]">in Action</span>
+      </h2>
+      <p class="text-[#0F0E0D]/60 text-lg mt-4 font-body">
+        Snapshots from our engagements across organizations and communities
+      </p>
+    </div>
+
+    <!-- Photo Grid/Masonry -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Photo 1 -->
+      <div class="bg-white p-3 rounded-3xl shadow-md border border-[#0F0E0D]/10 group flex flex-col transition-all hover:shadow-lg">
+        <div class="rounded-2xl overflow-hidden h-64 mb-4 bg-gray-100 relative">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="Event presentation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+        </div>
+        <div class="px-2 pb-2">
+          <h4 class="font-bold text-[#0F0E0D] text-lg font-headline tracking-tight">Annual Healthtech Summit</h4>
+          <p class="text-[#0F0E0D]/60 text-sm mt-1 font-body">Bangalore</p>
+        </div>
+      </div>
+      <!-- Photo 2 (Wider) -->
+      <div class="bg-white p-3 rounded-3xl shadow-md border border-[#0F0E0D]/10 lg:col-span-2 group flex flex-col transition-all hover:shadow-lg">
+        <div class="rounded-2xl overflow-hidden h-64 mb-4 bg-gray-100 relative">
+          <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=1200&auto=format&fit=crop" alt="Networking dinner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+        </div>
+        <div class="px-2 pb-2">
+          <h4 class="font-bold text-[#0F0E0D] text-lg font-headline tracking-tight">Orbyt Networking Mixer</h4>
+          <p class="text-[#0F0E0D]/60 text-sm mt-1 font-body">Mumbai • Exclusive Dinner</p>
+        </div>
+      </div>
+      <!-- Photo 3 (Wider) -->
+      <div class="bg-white p-3 rounded-3xl shadow-md border border-[#0F0E0D]/10 lg:col-span-2 group flex flex-col transition-all hover:shadow-lg">
+        <div class="rounded-2xl overflow-hidden h-64 mb-4 bg-gray-100 relative">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop" alt="Workshop discussion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+        </div>
+        <div class="px-2 pb-2">
+          <h4 class="font-bold text-[#0F0E0D] text-lg font-headline tracking-tight">Clinician-Founder Sync</h4>
+          <p class="text-[#0F0E0D]/60 text-sm mt-1 font-body">Delhi • Workshop</p>
+        </div>
+      </div>
+      <!-- Photo 4 -->
+      <div class="bg-white p-3 rounded-3xl shadow-md border border-[#0F0E0D]/10 group flex flex-col transition-all hover:shadow-lg">
+        <div class="rounded-2xl overflow-hidden h-64 mb-4 bg-gray-100 relative">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=800&auto=format&fit=crop" alt="Panel discussion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+        </div>
+        <div class="px-2 pb-2">
+          <h4 class="font-bold text-[#0F0E0D] text-lg font-headline tracking-tight">Closed-Door Roundtable #42</h4>
+          <p class="text-[#0F0E0D]/60 text-sm mt-1 font-body">Hyderabad • Policy Panel</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="orbyt" class="relative py-32 bg-[#03060c] px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-b border-white/10">
+
+    
+
+    <!-- SVG Orbital Rings in BG -->
+
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+
+      <svg class="w-[900px] h-[900px] animate-spin-slow" viewBox="0 0 800 800" fill="none" stroke="currentColor">
+
+        <ellipse cx="400" cy="400" rx="380" ry="120" stroke="url(#ring-gradient)" stroke-width="1.5" stroke-dasharray="6 8" transform="rotate(-25 400 400)" />
+
+        <ellipse cx="400" cy="400" rx="300" ry="90" stroke="rgba(255, 69, 0, 0.4)" stroke-width="1" transform="rotate(35 400 400)" />
+
+        <ellipse cx="400" cy="400" rx="220" ry="70" stroke="rgba(227, 0, 113, 0.5)" stroke-width="1.5" stroke-dasharray="4 6" transform="rotate(-60 400 400)" />
+
+        <defs>
+
+          <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+
+            <stop offset="0%" stop-color="#FF4500" />
+
+            <stop offset="50%" stop-color="#E30071" />
+
+            <stop offset="100%" stop-color="#7F30D0" />
+
+          </linearGradient>
+
+        </defs>
+
+      </svg>
+
+    </div>
+
+
+
+    <!-- Red-Orange Atmospheric Glow -->
+
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(255,69,0,0.18)_0%,rgba(227,0,113,0.08)_45%,transparent_75%)] blur-[90px] pointer-events-none"></div>
+
+
+
+    <div class="max-w-5xl mx-auto relative z-10 text-center space-y-7">
+
+      
+
+      <!-- Label -->
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FF4500]/10 border border-[#FF4500]/30 backdrop-blur-md">
+
+        <span class="w-2 h-2 rounded-full bg-[#FF4500] animate-pulse"></span>
+
+        <span class="text-sm font-mono font-bold tracking-[0.25em] text-[#FF4500] uppercase">SCALE</span>
+
+      </div>
+
+
+
+      <!-- H2 -->
+
+      <h2 class="font-serif text-5xl sm:text-6xl lg:text-[68px] font-normal text-white tracking-tight leading-tight">
+
+        Meet Orbyt.
+
+      </h2>
+
+
+
+      <!-- Sub -->
+
+      <p class="text-xl sm:text-2xl font-serif italic text-white/90 max-w-2xl mx-auto">
+
+        The network that moves you forward.
+
+      </p>
+
+
+
+      <!-- Body -->
+
+      <p class="text-white/60 font-sans text-base sm:text-lg max-w-xl mx-auto">
+
+        Ambition is common. Consistency is rare. The people, accountability, and access that keep you moving forward in healthcare.
+
+      </p>
+
+
+
+      <!-- Scarcity Badge -->
+
+      <div class="inline-block pt-2">
+
+        <div class="px-5 py-2 rounded-full bg-white/5 border border-white/15 text-sm font-mono text-white/80">
+
+          <span class="text-[#FF4500] font-bold">77 founding places remaining</span> · Applications strictly curated
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CTA Button: Orange to Pink Gradient -->
+
+      <div class="pt-4 flex justify-center">
+
+        <a href="#join-orbyt" class="px-10 py-4 rounded-full bg-gradient-to-r from-[#FF4500] via-[#E30071] to-[#FF4500] bg-size-200 hover:bg-right hover:scale-105 transition-all duration-[300ms] ease-out text-white font-bold text-base tracking-wide shadow-2xl shadow-[#FF4500]/30 flex items-center gap-3">
+
+          <span>Apply for Orbyt Founding Cohort</span>
+
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+        </a>
+
+      </div>
+
+
+
+      <!-- Orbyt Pillars Grid -->
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-12 text-left max-w-4xl mx-auto">
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
+
+          <p class="text-sm font-mono text-[#FF4500] uppercase tracking-wider mb-1">PILLAR 01</p>
+
+          <h4 class="text-sm font-bold text-white mb-1.5">1-on-1 Matchmaking</h4>
+
+          <p class="text-xs text-white/50 leading-relaxed">Algorithmic and hand-curated matching between healthcare builders and specialized advisors.</p>
+
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
+
+          <p class="text-sm font-mono text-[#FF4500] uppercase tracking-wider mb-1">PILLAR 02</p>
+
+          <h4 class="text-sm font-bold text-white mb-1.5">Hospital Pilot Fast-Track</h4>
+
+          <p class="text-xs text-white/50 leading-relaxed">Pre-negotiated sandbox access with Tier-1 and Tier-2 hospital chains across India.</p>
+
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md">
+
+          <p class="text-sm font-mono text-[#FF4500] uppercase tracking-wider mb-1">PILLAR 03</p>
+
+          <h4 class="text-sm font-bold text-white mb-1.5">Closed Peer Circles</h4>
+
+          <p class="text-xs text-white/50 leading-relaxed">Bi-weekly unrecorded peer circles on revenue, clinical trial design, and investor rounds.</p>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+<!-- =========================================================================
+
+
+
+       7. CHAPTERS SECTION (City hubs across India)
+
+
+
+       ========================================================================= -->
+
+
+
+<section class="snap-start bg-[#FAF7F2] py-24 px-8 border-b border-[#0F0E0D]/10" id="chapters">
+
+
+
+<div class="max-w-7xl mx-auto">
+
+
+
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+
+
+
+<div>
+
+
+
+<span class="uppercase text-[#E30071] text-xs font-bold tracking-[0.15em] block mb-2 font-headline">National Footprint</span>
+
+
+
+<h2 class="font-serif text-3xl sm:text-4xl text-[#0F0E0D] font-normal">5 Active City Chapters</h2>
+
+
+
+</div>
+
+
+
+<p class="text-[#0F0E0D]/65 text-sm sm:text-base max-w-md mt-4 md:mt-0 font-body">
+
+
+
+          Physical dinners, hospital walkthroughs, and thesis discussions happen monthly in India's key healthtech capitals.
+
+
+
+        </p>
+
+
+
+</div>
+
+
+
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+
+
+
+<div class="p-6 rounded-2xl bg-white/70 border border-[#0F0E0D]/10 hover:border-[#0F0E0D]/30 transition-all">
+
+
+
+<div class="text-xs uppercase font-bold tracking-wider text-[#0F0E0D]/50 font-headline">Chapter 01</div>
+
+
+
+<div class="text-xl font-serif text-[#0F0E0D] mt-2 mb-1">Bengaluru</div>
+
+
+
+<div class="text-xs text-[#0F0E0D]/70">2,800+ Members</div>
+
+
+
+</div>
+
+
+
+<div class="p-6 rounded-2xl bg-white/70 border border-[#0F0E0D]/10 hover:border-[#0F0E0D]/30 transition-all">
+
+
+
+<div class="text-xs uppercase font-bold tracking-wider text-[#0F0E0D]/50 font-headline">Chapter 02</div>
+
+
+
+<div class="text-xl font-serif text-[#0F0E0D] mt-2 mb-1">Delhi NCR</div>
+
+
+
+<div class="text-xs text-[#0F0E0D]/70">1,900+ Members</div>
+
+
+
+</div>
+
+
+
+<div class="p-6 rounded-2xl bg-white/70 border border-[#0F0E0D]/10 hover:border-[#0F0E0D]/30 transition-all">
+
+
+
+<div class="text-xs uppercase font-bold tracking-wider text-[#0F0E0D]/50 font-headline">Chapter 03</div>
+
+
+
+<div class="text-xl font-serif text-[#0F0E0D] mt-2 mb-1">Mumbai</div>
+
+
+
+<div class="text-xs text-[#0F0E0D]/70">1,200+ Members</div>
+
+
+
+</div>
+
+
+
+<div class="p-6 rounded-2xl bg-white/70 border border-[#0F0E0D]/10 hover:border-[#0F0E0D]/30 transition-all">
+
+
+
+<div class="text-xs uppercase font-bold tracking-wider text-[#0F0E0D]/50 font-headline">Chapter 04</div>
+
+
+
+<div class="text-xl font-serif text-[#0F0E0D] mt-2 mb-1">Hyderabad</div>
+
+
+
+<div class="text-xs text-[#0F0E0D]/70">650+ Members</div>
+
+
+
+</div>
+
+
+
+<div class="p-6 rounded-2xl bg-white/70 border border-[#0F0E0D]/10 hover:border-[#0F0E0D]/30 transition-all">
+
+
+
+<div class="text-xs uppercase font-bold tracking-wider text-[#0F0E0D]/50 font-headline">Chapter 05</div>
+
+
+
+<div class="text-xl font-serif text-[#0F0E0D] mt-2 mb-1">Chennai</div>
+
+
+
+<div class="text-xs text-[#0F0E0D]/70">450+ Members</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- =========================================================================
+
+
+
+       8. FINAL CTA & FOUNDER QUOTE
+
+
+
+       ========================================================================= -->
+
+
+
+<section class="snap-start bg-[#FAF7F2] py-28 px-8" id="join">
+
+
+
+<div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+
+
+
+<!-- Big Playfair Display Quote -->
+
+
+
+<h2 class="font-serif italic text-3xl sm:text-5xl lg:text-6xl text-[#0F0E0D] leading-[1.15] mb-5">
+
+
+
+        “The best of THC is still ahead of us.”
+
+
+
+      </h2>
+
+
+
+<!-- Attribution -->
+
+
+
+<p class="text-sm font-semibold tracking-wider uppercase text-[#0F0E0D]/60 mb-12 font-headline">
+
+
+
+        Parul Aggarwal, Founder — The Healthtech Collective
+
+
+
+      </p>
+
+
+
+<!-- Action Buttons -->
+
+
+
+<div class="flex flex-wrap justify-center items-center gap-5">
+
+
+
+<a class="bg-[#E30071] text-white font-medium text-base px-9 py-4 rounded-full shadow-lg shadow-[#E30071]/25 hover:bg-[#c90064] active:scale-[0.97] transition-transform duration-150 ease-out transition-all inline-flex items-center gap-2" href="#join">
+
+
+
+<span>Join the Community</span>
+
+
+
+<span class="material-symbols-outlined text-[20px]">groups</span>
+
+
+
+</a>
+
+
+
+<a class="border border-[#0F0E0D]/20 hover:border-[#0F0E0D] text-[#0F0E0D] font-medium text-base px-8 py-4 rounded-full hover:bg-[#0F0E0D]/5 active:scale-[0.97] transition-transform duration-150 ease-out transition-all inline-flex items-center gap-2" href="#signals">
+
+
+
+<span>Explore Signals</span>
+
+
+
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+
+
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+<!-- =========================================================================
+
+
+
+       9. FOOTER (Shared Component Translation)
+
+
+
+       ========================================================================= -->
+
+
+
+<footer class="w-full bg-[#FAF7F2] border-t border-[#0F0E0D]/10">
+
+
+
+<div class="max-w-7xl mx-auto px-8 py-16 flex flex-col md:flex-row justify-between items-center gap-8">
+
+
+
+<!-- Brand & Tagline -->
+
+
+
+<div class="flex flex-col items-center md:items-start text-center md:text-left">
+
+
+
+<a class="font-headline font-bold text-2xl text-[#0F0E0D] tracking-tight mb-2" href="#">
+
+
+
+          The Healthtech Collective
+
+
+
+        </a>
+
+
+
+<p class="font-body text-sm text-[#0F0E0D]/70 max-w-md">
+
+
+
+          Â© 2025 The Healthtech Collective. All rights reserved. India's largest healthtech builder community.
+
+
+
+        </p>
+
+
+
+</div>
+
+
+
+<!-- Footer Links (Immutable casing from JSON) -->
+
+
+
+<div class="flex flex-wrap justify-center items-center gap-6 font-body text-sm text-[#0F0E0D]/70">
+
+
+
+<a class="hover:text-[#E30071] hover:underline transition-all duration-200" href="#">Manifesto</a>
+
+
+
+<a class="hover:text-[#E30071] hover:underline transition-all duration-200" href="#chapters">Chapters</a>
+
+
+
+<a class="hover:text-[#E30071] hover:underline transition-all duration-200" href="#">Privacy Policy</a>
+
+
+
+<a class="hover:text-[#E30071] hover:underline transition-all duration-200" href="#">Code of Conduct</a>
+
+
+
+<a class="hover:text-[#E30071] hover:underline transition-all duration-200" href="#">Contact</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</footer>
+
+
+
+
+<script>
+  const counters = document.querySelectorAll('.counter');
+  const speed = 200;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        const updateCount = () => {
+          const targetValue = +target.getAttribute('data-target');
+          const count = +target.innerText.replace(/,/g, '');
+          const inc = targetValue / speed;
+          if (count < targetValue) {
+            target.innerText = Math.ceil(count + inc).toLocaleString();
+            setTimeout(updateCount, 15);
+          } else {
+            target.innerText = targetValue.toLocaleString();
+          }
+        };
+        updateCount();
+        observer.unobserve(target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(counter => observer.observe(counter));
+</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-12', 'scale-95');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      document.querySelectorAll('.observer-element').forEach((el) => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body></html>
+
+
+
+
+
+
+
+
+

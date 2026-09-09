@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THC Design Dashboard — 3 Homepage Versions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background: #09090b; color: #fff; }
+    ::selection { background: #E30071; color: #fff; }
+
+    /* Dashboard glass cards */
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: border-color 200ms ease, transform 200ms cubic-bezier(0.23,1,0.32,1);
+      cursor: pointer;
+    }
+    .card:hover { border-color: rgba(227,0,113,0.5); transform: translateY(-4px); }
+    .card:active { transform: scale(0.99); }
+
+    /* Preview iframe */
+    .preview-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 58%;        /* 16:9-ish ratio */
+      background: #111;
+      overflow: hidden;
+    }
+    .preview-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 200%;             /* scale trick: 200% wide */
+      height: 200%;
+      transform: scale(0.5);
+      transform-origin: top left;
+      pointer-events: none;
+      border: none;
+    }
+
+    /* Version badges */
+    .badge-v1 { background: rgba(250,247,242,0.15); color: #FAF7F2; border: 1px solid rgba(250,247,242,0.2); }
+    .badge-v2 { background: rgba(13,27,62,0.6); color: #93b4ff; border: 1px solid rgba(100,149,237,0.3); }
+    .badge-v3 { background: rgba(227,0,113,0.15); color: #ff6bb5; border: 1px solid rgba(227,0,113,0.35); }
+
+    /* Gradient text */
+    .g-text { background: linear-gradient(90deg, #E30071, #7F30D0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* Version tag bar */
+    .v-tag { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* Full-screen modal */
+    #modal {
+      display: none;
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+    }
+    #modal.open { display: flex; }
+    #modal-frame {
+      flex: 1;
+      border: none;
+      width: 100%;
+    }
+    #modal-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(9,9,11,0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      gap: 12px;
+    }
+    #modal-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
+    #modal-close {
+      cursor: pointer;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 12px; font-weight: 600;
+      transition: background 150ms;
+    }
+    #modal-close:hover { background: rgba(255,255,255,0.14); }
+    .v-switcher { display: flex; gap: 6px; }
+    .v-btn {
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 11px; font-weight: 700;
+      border: 1px solid transparent;
+      transition: all 150ms;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .v-btn.active { background: #E30071; color: #fff; border-color: #E30071; }
+    .v-btn:not(.active) { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.1); }
+    .v-btn:not(.active):hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+    /* Pill metrics */
+    .metric { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px 16px; }
+
+    /* Gradient ambient glow on header */
+    .header-glow::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(227,0,113,0.18) 0%, rgba(127,48,208,0.10) 50%, transparent 75%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dashboard Header -->
+  <header class="relative header-glow border-b border-white/[0.07] px-8 py-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div>
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-2 h-2 rounded-full bg-[#E30071] animate-pulse"></div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">Design Review Dashboard</span>
+        </div>
+        <h1 class="text-2xl font-bold tracking-tight">
+          <span class="g-text">The Healthtech Collective</span>
+          <span class="text-white/70 font-normal text-lg ml-2">— Homepage v1 / v2 / v3 / v4</span>
+        </h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="metric text-center">
+          <div class="text-xs text-white/40 mb-0.5">Versions</div>
+          <div class="text-xl font-bold g-text">4</div>
+        </div>
+        <div class="metric text-center">
+          <div class="text-xs text-white/40 mb-0.5">Status</div>
+          <div class="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mt-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>Live
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Grid -->
+  <main class="max-w-7xl mx-auto px-8 py-10">
+
+    <!-- Section label -->
+    <div class="flex items-center justify-between mb-8">
+      <p class="text-sm text-white/40">Click any version to preview full-screen &nbsp;·&nbsp; Use the switcher in preview to compare</p>
+      <span class="text-xs text-white/30 font-mono">localhost:8080</span>
+    </div>
+
+    <!-- 3 Version Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- V1 -->
+      <div class="card" onclick="openModal('v1/index.html', 'V1 — Editorial Warm', 0)">
+        <div class="preview-wrap">
+          <iframe src="v1/index.html" loading="lazy" title="V1 Preview" scrolling="no"></iframe>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="v-tag badge-v1">V1</span>
+            <span class="text-xs text-white/30 font-mono">Editorial Warm</span>
+          </div>
+          <h2 class="text-base font-bold text-white mb-1">Editorial Warm</h2>
+          <p class="text-sm text-white/50 leading-relaxed mb-4">TPF-inspired. Warm cream background, Playfair Display headlines, pink scribble underline. Subdued and editorial.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Cream bg</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">SVG scribble</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Warm/editorial</span>
+          </div>
+        </div>
+        <div class="border-t border-white/[0.06] px-5 py-3 flex items-center justify-between">
+          <span class="text-xs text-white/30">Hero: cream #FAF7F2</span>
+          <span class="text-xs text-[#E30071] font-semibold">Open fullscreen →</span>
+        </div>
+      </div>
+
+      <!-- V2 -->
+      <div class="card" onclick="openModal('v2/index.html', 'V2 — Dark Builder', 1)">
+        <div class="preview-wrap">
+          <iframe src="v2/index.html" loading="lazy" title="V2 Preview" scrolling="no"></iframe>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="v-tag badge-v2">V2</span>
+            <span class="text-xs text-white/30 font-mono">Dark Builder</span>
+          </div>
+          <h2 class="text-base font-bold text-white mb-1">Dark Builder</h2>
+          <p class="text-sm text-white/50 leading-relaxed mb-4">Orbyt-inspired. Deep navy hero with atmospheric pink/purple glows, glass stat cards, gradient underline on headline.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Dark navy</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Glass cards</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">LIVE WIRE ticker</span>
+          </div>
+        </div>
+        <div class="border-t border-white/[0.06] px-5 py-3 flex items-center justify-between">
+          <span class="text-xs text-white/30">Hero: navy #0D1B3E</span>
+          <span class="text-xs text-[#E30071] font-semibold">Open fullscreen →</span>
+        </div>
+      </div>
+
+      <!-- V3 -->
+      <div class="card" onclick="openModal('v3/index.html', 'V3 — Vibrant Community', 2)">
+        <div class="preview-wrap">
+          <iframe src="v3/index.html" loading="lazy" title="V3 Preview" scrolling="no"></iframe>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="v-tag badge-v3">V3</span>
+            <span class="text-xs text-white/30 font-mono">Vibrant Community</span>
+          </div>
+          <h2 class="text-base font-bold text-white mb-1">Vibrant Community</h2>
+          <p class="text-sm text-white/50 leading-relaxed mb-4">Loud, alive, kinetic. Full-bleed pink→purple→navy gradient mesh, live activity ticker, founder voice headline.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Gradient mesh</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Live ticker</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Founder voice H1</span>
+          </div>
+        </div>
+        <div class="border-t border-white/[0.06] px-5 py-3 flex items-center justify-between">
+          <span class="text-xs text-white/30">Hero: gradient #E30071→#0D1B3E</span>
+          <span class="text-xs text-[#E30071] font-semibold">Open fullscreen →</span>
+        </div>
+      </div>
+
+    </div>
+
+          <!-- V4 -->
+      <div class="card" onclick="openModal('v4/index.html', 'V4 — Healthtech Europe Inspired', 3)">
+        <div class="preview-wrap">
+          <iframe src="v4/index.html" loading="lazy" title="V4 Preview" scrolling="no"></iframe>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="v-tag bg-white/10 text-white border border-white/20">V4</span>
+            <span class="text-xs text-white/30 font-mono">Healthtech Europe</span>
+          </div>
+          <h2 class="text-base font-bold text-white mb-1">Healthtech Europe</h2>
+          <p class="text-sm text-white/50 leading-relaxed mb-4">White base with lively grid lines. Animated stats, and a full-screen scroll-snap mid-CTA for signups right after the hero.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Grid base</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Scroll stop</span>
+            <span class="px-2 py-1 rounded-lg bg-white/5 text-[10px] text-white/40 border border-white/5">Animated stats</span>
+          </div>
+        </div>
+        <div class="border-t border-white/[0.06] px-5 py-3 flex items-center justify-between">
+          <span class="text-xs text-white/30">Hero: White #FFFFFF</span>
+          <span class="text-xs text-[#E30071] font-semibold">Open fullscreen →</span>
+        </div>
+      </div>
+
+    <!-- Shared Design System reference -->
+    <div class="mt-10 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-1.5 h-1.5 rounded-full bg-[#7F30D0]"></div>
+        <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40">Shared Design Tokens</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div>
+          <div class="text-[10px] text-white/30 mb-2 uppercase tracking-wider">Brand Colors</div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-md" style="background:#E30071"></div><span class="text-xs text-white/60 font-mono">#E30071 Pink</span></div>
+            <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-md" style="background:#7F30D0"></div><span class="text-xs text-white/60 font-mono">#7F30D0 Purple</span></div>
+            <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-md" style="background:#0D1B3E"></div><span class="text-xs text-white/60 font-mono">#0D1B3E Navy</span></div>
+            <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-md" style="background:#FF4500"></div><span class="text-xs text-white/60 font-mono">#FF4500 Orbyt</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="text-[10px] text-white/30 mb-2 uppercase tracking-wider">Typography</div>
+          <div class="space-y-1.5 text-xs text-white/60">
+            <div>Playfair Display — Headlines</div>
+            <div>DM Sans — Body</div>
+            <div>Space Grotesk — Mono/Labels</div>
+          </div>
+        </div>
+        <div>
+          <div class="text-[10px] text-white/30 mb-2 uppercase tracking-wider">Key Stats</div>
+          <div class="space-y-1.5 text-xs text-white/60">
+            <div>7,000+ Members</div>
+            <div>80+ Events</div>
+            <div>5 City Chapters</div>
+            <div>77/100 Orbyt spots</div>
+          </div>
+        </div>
+        <div>
+          <div class="text-[10px] text-white/30 mb-2 uppercase tracking-wider">Pillars</div>
+          <div class="space-y-1.5 text-xs text-white/60">
+            <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-cyan-400"></span>Signals (Intelligence)</div>
+            <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-amber-400"></span>Meet (Curated Sessions)</div>
+            <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm" style="background:#E30071"></span>Scale / Orbyt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Full-screen Preview Modal -->
+  <div id="modal">
+    <div id="modal-bar">
+      <div class="v-switcher">
+        <button class="v-btn active" id="btn-v1" onclick="switchVersion('v1/index.html', 'V1 — Editorial Warm', 0)">V1 Editorial</button>
+        <button class="v-btn" id="btn-v2" onclick="switchVersion('v2/index.html', 'V2 — Dark Builder', 1)">V2 Dark</button>
+        <button class="v-btn" id="btn-v3" onclick="switchVersion('v3/index.html', 'V3 — Vibrant', 2)">V3 Vibrant</button>
+        <button class="v-btn" id="btn-v4" onclick="switchVersion('v4/index.html', 'V4 — Healthtech Europe', 3)">V4 Europe</button>
+      </div>
+      <span id="modal-title">V1 — Editorial Warm</span>
+      <button id="modal-close" onclick="closeModal()">✕ Close</button>
+    </div>
+    <iframe id="modal-frame" src="" title="Full Preview"></iframe>
+  </div>
+
+  <script>
+    const versions = [
+      { id: 'btn-v1', url: 'v1/index.html', label: 'V1 — Editorial Warm' },
+      { id: 'btn-v2', url: 'v2/index.html', label: 'V2 — Dark Builder' },
+      { id: 'btn-v3', url: 'v3/index.html', label: 'V3 — Vibrant Community' },
+      { id: 'btn-v4', url: 'v4/index.html', label: 'V4 — Healthtech Europe' },
+    ];
+
+    function openModal(url, label, activeIndex) {
+      const modal = document.getElementById('modal');
+      document.getElementById('modal-frame').src = url;
+      document.getElementById('modal-title').textContent = label;
+      modal.classList.add('open');
+      updateButtons(activeIndex);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function switchVersion(url, label, activeIndex) {
+      document.getElementById('modal-frame').src = url;
+      document.getElementById('modal-title').textContent = label;
+      updateButtons(activeIndex);
+    }
+
+    function updateButtons(activeIndex) {
+      versions.forEach((v, i) => {
+        const btn = document.getElementById(v.id);
+        btn.className = 'v-btn ' + (i === activeIndex ? 'active' : '');
+      });
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.getElementById('modal-frame').src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>
+
